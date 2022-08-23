@@ -68,6 +68,12 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
     }
 
     // Functions
+    // Functions: Fallback functions
+    receive() external payable {}
+
+    fallback() external payable {}
+
+    // Functions: Other functions
     /**
      * @dev This is the function that the Chainlink keeper nodes call and if upkeepNeeded is true,
      * performUpkeep function will be initiated.
@@ -146,7 +152,7 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
         emit WinnerPicked(recentWinner);
     }
 
-    // View / Pure functions
+    // Functions: View / Pure functions
     function getEntranceFee() external view returns (uint256) {
         return i_entranceFee;
     }
