@@ -25,6 +25,16 @@ module.exports = {
       blockConfirmations: 6,
       gas: 6000000,
     },
+    hardhat: {
+      // // If you want to do some forking, uncomment this
+      // forking: {
+      //   url: MAINNET_RPC_URL
+      // }
+      chainId: 31337,
+    },
+    localhost: {
+      chainId: 31337,
+    },
   },
   etherscan: {
     apiKey: ETHERSCAN_API_KEY
