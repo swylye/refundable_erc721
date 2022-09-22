@@ -2,11 +2,12 @@ const { network, ethers, getNamedAccounts } = require("hardhat")
 
 async function main() {
     const { deployer } = await getNamedAccounts()
-    const fundMe = await ethers.getContract("FundMe", deployer)
-    console.log("Funding contract...")
-    const transactionResponse = await fundMe.fund({ value: ethers.utils.parseEther("0.1") })
+    const nft = await ethers.getContract("RefundableERC721", deployer)
+    console.log("Minting NFT...")
+    const mintPrice = await nft.getMintPrice()
+    const transactionResponse = await nft.mint(1, { value: mintPrice })
     const transactionReceipt = await transactionResponse.wait(1)
-    console.log("Funded!")
+    console.log("Minted!")
 }
 
 main()
